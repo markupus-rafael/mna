@@ -1,0 +1,1 @@
+export const LOGINS_HAS_ERROR = "LOGINS_HAS_ERROR";
