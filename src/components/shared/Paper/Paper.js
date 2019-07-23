@@ -8,7 +8,7 @@ const Paper = ({className, children}) => {
                 {children}
             </div>
         </>
-    )
+    );
 };
 
 Paper.propTypes = {
@@ -16,7 +16,4 @@ Paper.propTypes = {
     className: PropTypes.string,
 };
 
-
-export {
-    Paper
-};
+export default Paper;

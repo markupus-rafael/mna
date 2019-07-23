@@ -1,0 +1,30 @@
+@import "../../vaiables";
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+   &__label {
+     margin-bottom: 10px;
+   }
+}
+
+.mna-input {
+  border-radius: 5px;
+  padding: 17px;
+  border: solid 1px $light-color;
+
+  &--error {
+    border: solid 1px $error-color;
+  }
+
+  &--success {
+    border: solid 1px $success-color;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, .5);
+  }
+}

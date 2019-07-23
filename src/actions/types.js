@@ -1,1 +1,2 @@
 export const LOGINS_HAS_ERROR = "LOGINS_HAS_ERROR";
+export const LOGINS_SUCCES = "LOGINS_SUCCES";
