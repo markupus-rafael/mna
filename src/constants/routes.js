@@ -1,15 +1,17 @@
 const LOGIN = '/login';
 const VENDORS = '/vendors';
 const ACCOUNT = '/account';
-const OPPORTUNIES = '/opportunies';
+const OPPORTUNITIES = '/opportunities';
 const ACQUIRER_CRITERIA = '/acquirerCriteria';
 const ACQUIRERS = '/acquirers';
 
-export default {
+const Routes = {
     LOGIN,
     VENDORS,
     ACCOUNT,
-    OPPORTUNIES,
+    OPPORTUNITIES,
     ACQUIRER_CRITERIA,
-    ACQUIRERS
+    ACQUIRERS,
 };
+
+export default Routes;

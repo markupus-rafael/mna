@@ -2,16 +2,17 @@ import React from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import loginImg from "./login.svg";
 import LoginContainer from "../../components/Login/LoginContainer";
-import './login.scss';
+import s from './login.module.scss';
+import Logo from "../../components/shared/Logo/Logo";
 
 const Login = () => {
     return (
         <div className="login">
-
                 <Row>
                     <Col xs={6} md={6}>
-                        <div className="login__left">
-                            <h1>Log in to your account</h1>
+                        <div className={s["login__left"]}>
+                            <Logo />
+                            <h1 className={`title title-main ${s["title-offset"]}`}>Log in to your account</h1>
                             <LoginContainer />
                         </div>
                     </Col>
@@ -21,7 +22,6 @@ const Login = () => {
                         </div>
                     </Col>
                 </Row>
-
         </div>
     );
 };

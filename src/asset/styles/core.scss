@@ -1,0 +1,27 @@
+@import 'components/input';
+@import 'components/button';
+
+.title {
+  color: #4d4e4e;
+
+  &-main {
+    font-size: 30px;
+  }
+}
+
+.mna-link {
+  display: block;
+
+  &:hover {
+    color: darken($success-color, 25%);
+    text-decoration: none;
+  }
+}
+
+.text-right {
+  text-align: right;
+}
+
+.accent {
+  color: $success-color;
+}

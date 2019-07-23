@@ -1,4 +1,4 @@
-@import "../../vaiables";
+@import "../helpers/vaiables";
 
 .form-group {
   display: flex;
@@ -6,14 +6,27 @@
   margin-bottom: 15px;
 
    &__label {
-     margin-bottom: 10px;
+     margin-bottom: 5px;
+     text-transform: uppercase;
    }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .mna-input {
+  position: relative;
   border-radius: 5px;
-  padding: 17px;
+  padding: 17px 30px 17px 17px;
   border: solid 1px $light-color;
+  width: 100%;
+
+  &--password {
+
+  }
 
   &--error {
     border: solid 1px $error-color;
@@ -23,8 +36,5 @@
     border: solid 1px $success-color;
   }
 
-  &:focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, .5);
-  }
+ @include updateFocus;
 }

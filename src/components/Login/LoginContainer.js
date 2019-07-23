@@ -1,67 +1,69 @@
 import React, {useState} from "react";
-import { FormGroup } from "../Form/FormGroup";
-import { Formik } from 'formik'
+import {bindActionCreators, compose} from 'redux';
+import { withRouter } from "react-router";
+import { connect } from 'react-redux';
+import { FormGroup } from "../shared/Form/FormGroup";
+import { withFormik } from 'formik'
 import Yup from 'yup';
-import validate from './validation/validate-spected'
-//import getValidationSchema from './getValidationSchema-spected'
-function getYupValidationSchema() {
-    return Yup.object().shape({
-        username: Yup.string().required('Username is required!'),
-        password: Yup
-            .string()
-            .required('required')
-    })
-}
-
+import Login from "./Login";
+import {login} from "../../actions/login/loginsActions"; // for everything
 
 const initialValues = {
     username: '',
     password: '',
 }
 
-const LoginContainer = () => {
-    const [form, setValues] = useState(initialValues);
-    // const updateField = e => {
-    //     setValues({
-    //         ...form,
-    //         [e.target.name]: e.target.value
-    //     });
-    // };
+const LoginSchema = Yup.object().shape({
+    email: Yup.string()
+        .required('Required email'),
+    password: Yup.string()
+        .required('Required password'),
+});
 
+const LoginContainer = (props) => {
+    const [form, setValues] = useState(initialValues);
+    const [inputPassword, setHidden] = useState({
+        hidden: true
+    });
+
+    const updateField = e => {
+        setValues({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const initLogin = (e) => {
+        e.preventDefault();
+        props.loginUser(form)
+    };
+
+    const toggleVisibilityPassword = () => {
+        setHidden({hidden: !inputPassword.hidden})
+        console.log(inputPassword);
+    };
+    console.log(inputPassword);
+    const inputType = inputPassword.hidden ? 'password' : 'text';
     return (
-        <Formik
-            initialValues={initialValues}
-            validationSchema={getYupValidationSchema}
-            onSubmit={(values, actions) => {
-                console.log(actions);
-                actions.setSubmitting(true);
-                setTimeout(() => {
-                    actions.resetForm(initialValues);
-                    actions.setSubmitting(false);
-                }, 2000);
-            }}
-            render={SignUp}
+        <Login handleChange={updateField}
+               formSubmit={initLogin}
+               inputType={inputType}
+               onIconCLick={toggleVisibilityPassword}
         />
     )
 };
 
-const SignUp = ({ isSubmitting, values, errors, handleChange, handleSubmit, dirty }) => (
-    <form className="form-login" onSubmit={handleSubmit}>
-        <FormGroup type="text"
-                   labelText="Username"
-                   onChange={handleChange}
-                   value={values.username}
-                   name="username"/>
-        <FormGroup type="password"
-                   onChange={handleChange}
-                   value={values.password}
-                   labelText="Password"
-                   name="password"/>
+const mapStateToProps = store => ({
+    email: store.logins.email,
+    password: store.logins.password,
+    token: store.logins.token
+});
 
-        <button  disabled={!dirty}>{isSubmitting ? 'Loading' : 'Login'}</button>
-    </form>
-);
+const mapDispatchToProps = dispatch => ({
+    loginUser: data => dispatch(login(data)),
+});
 
-
-
-export default LoginContainer;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withRouter(LoginContainer));

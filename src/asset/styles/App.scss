@@ -1,0 +1,19 @@
+@import url('../../../node_modules/@blueprintjs/core/lib/css/blueprint.css');
+@import 'helpers/vaiables';
+@import 'helpers/mixin';
+@import 'core';
+
+
+body {
+  font-size: 16px;
+  color: $text-color;
+  font-family: 'Roboto', sans-serif;
+  background-color: $body-bg;
+  overflow-x: hidden;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}

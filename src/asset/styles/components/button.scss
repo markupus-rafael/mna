@@ -1,0 +1,36 @@
+.mna-btn {
+  padding: 15px;
+  color: #fff;
+  width: 100%;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+
+  &--success {
+    background-color: $success-color;
+  }
+
+  &--default {
+
+  }
+
+  &--login {
+    margin: 50px 0;
+  }
+
+  &--ico {
+    position: absolute;
+    z-index: 5;
+    right: 0;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+
+    @include updateFocus;
+  }
+
+
+  @include updateFocus;
+}

@@ -1,2 +1,3 @@
 export const LOGINS_HAS_ERROR = "LOGINS_HAS_ERROR";
+export const USER_IS_LOADING = "USER_IS_LOADING";
 export const LOGINS_SUCCES = "LOGINS_SUCCES";

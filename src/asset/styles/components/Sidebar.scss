@@ -1,0 +1,23 @@
+.mna-sidebar {
+  padding-top: 30px;
+  background-color: #fff;
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    margin-bottom: 35px;
+  }
+
+  &__link {
+    font-size: 14px;
+    padding: 18px 0;
+      &:hover {
+        background-color: $primary-color;
+        color: #fff;
+        transition: .5s ease background-color;
+      }
+  }
+}
