@@ -6,6 +6,7 @@ const initialState = {
     email: '',
   password: '',
     token: '',
+    myTestValue: 'AAAA',
   isLoading: false,
   hasError: false
 };

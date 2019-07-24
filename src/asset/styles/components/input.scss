@@ -24,17 +24,25 @@
   border: solid 1px $light-color;
   width: 100%;
 
+  &:not(mna-input--error) {
+    @include updateFocus;
+  }
+
   &--password {
 
   }
 
   &--error {
     border: solid 1px $error-color;
+
+    &:focus {
+      box-shadow: 0 0 0 2px $error-color
+    }
   }
 
   &--success {
     border: solid 1px $success-color;
   }
 
- @include updateFocus;
+
 }

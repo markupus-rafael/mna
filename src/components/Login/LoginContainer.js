@@ -2,23 +2,15 @@ import React, {useState} from "react";
 import {bindActionCreators, compose} from 'redux';
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
-import { FormGroup } from "../shared/Form/FormGroup";
-import { withFormik } from 'formik'
-import Yup from 'yup';
+import { withFormik } from 'formik';
 import Login from "./Login";
-import {login} from "../../actions/login/loginsActions"; // for everything
+import { login } from "../../actions/login/loginsActions";
+import LoginValidation from "./validation/LoginShema";
 
 const initialValues = {
-    username: '',
+    email: '',
     password: '',
-}
-
-const LoginSchema = Yup.object().shape({
-    email: Yup.string()
-        .required('Required email'),
-    password: Yup.string()
-        .required('Required password'),
-});
+};
 
 const LoginContainer = (props) => {
     const [form, setValues] = useState(initialValues);
@@ -35,35 +27,67 @@ const LoginContainer = (props) => {
 
     const initLogin = (e) => {
         e.preventDefault();
-        props.loginUser(form)
+        props.loginUser(form);
     };
 
-    const toggleVisibilityPassword = () => {
-        setHidden({hidden: !inputPassword.hidden})
-        console.log(inputPassword);
-    };
-    console.log(inputPassword);
+    const toggleVisibilityPassword = () => setHidden({hidden: !inputPassword.hidden});
+
     const inputType = inputPassword.hidden ? 'password' : 'text';
+
+        const {
+            values,
+            touched,
+            errors,
+            dirty,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            handleReset
+        } = props;
     return (
-        <Login handleChange={updateField}
+        <Login handleChange={handleChange}
+               handleSubmit={handleSubmit}
+               errors={errors}
+               touched={touched}
+               values={values}
+               isSubmitting={isSubmitting}
                formSubmit={initLogin}
                inputType={inputType}
                onIconCLick={toggleVisibilityPassword}
         />
-    )
+    );
 };
 
 const mapStateToProps = store => ({
     email: store.logins.email,
     password: store.logins.password,
-    token: store.logins.token
+    token: store.logins.token,
+    myTestValue: store.logins.myTestValue
 });
 
 const mapDispatchToProps = dispatch => ({
     loginUser: data => dispatch(login(data)),
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withRouter(LoginContainer));
+export default compose( withRouter,
+                        withFormik({
+                            //enableReinitialize: true,
+                            mapPropsToValues: () => ({
+                                email: '',
+                                password: ''
+                            }),
+                            handleSubmit: (values, {setSubmitting, props}) => {
+                                console.log("Submitted Email:", values.email);
+                                console.log("Submitted Password:", values.password);
+                                // Simulates the delay of a real request
+                                console.log(props);
+                                const payload = {
+                                    ...values,
+                                };
+                                //loginUser(payload);
+                                // test
+                                setTimeout(() => setSubmitting(false), 3 * 1000);
+                            },
+                            validationSchema: LoginValidation
+                        }), connect(mapStateToProps, mapDispatchToProps))(LoginContainer);

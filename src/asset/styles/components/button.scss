@@ -7,6 +7,10 @@
   font-size: 16px;
   cursor: pointer;
 
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
   &--success {
     background-color: $success-color;
   }
@@ -22,11 +26,14 @@
   &--ico {
     position: absolute;
     z-index: 5;
-    right: 0;
+    right: 10px;
+    padding: 0;
     background-color: transparent;
     border: 0;
+    border-radius: 50%;
     outline: 0;
     cursor: pointer;
+
 
     @include updateFocus;
   }

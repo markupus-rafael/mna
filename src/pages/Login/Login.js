@@ -10,7 +10,7 @@ const Login = () => {
         <div className="login">
                 <Row>
                     <Col xs={6} md={6}>
-                        <div className={s["login__left"]}>
+                        <div className={s.login__left}>
                             <Logo />
                             <h1 className={`title title-main ${s["title-offset"]}`}>Log in to your account</h1>
                             <LoginContainer />
