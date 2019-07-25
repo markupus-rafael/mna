@@ -2,27 +2,29 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import {FormGroup} from "../shared/Form/FormGroup";
-import ErrorMessage from "../shared/ErrorMessage/ErrorMessage";
+import MnaErrorMessage from "../shared/ErrorMessage/MnaErrorMessage";
 
-const Login = ({ handleChange, handleSubmit, inputType, onIconCLick, values, errors, touched, isSubmitting }) => (
+const Login = ({ handleChange, handleSubmit, inputType, onIconCLick, values, errors, touched, isSubmitting, setFieldTouched }) => (
     <form className="form-login" onSubmit={handleSubmit}>
         <FormGroup type="email"
                    labelText="Email"
                    onChange={handleChange}
+                   setFieldTouched={setFieldTouched}
                    value={values.email}
                    errors={errors}
-                   dispayError={Object.values(errors).length > 0}
-                   inputError={errors && errors.email}
+                   dispayError={touched.email && errors.email}
+                   inputHasError={errors && errors.email}
                    name="email"
         />
 
         <FormGroup type={inputType}
                    onChange={handleChange}
                    onIconCLick={onIconCLick}
+                   setFieldTouched={setFieldTouched}
                    value={values.password}
                    errors={errors}
-                   dispayError={Object.values(errors).length > 0}
-                   inputError={errors && errors.password}
+                   dispayError={touched.password && errors.password}
+                   inputHasError={errors && errors.password}
                    labelText="Password"
                    name="password"
         />

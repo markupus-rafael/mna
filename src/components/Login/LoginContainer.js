@@ -41,6 +41,7 @@ const LoginContainer = (props) => {
             dirty,
             isSubmitting,
             handleChange,
+            setFieldTouched,
             handleBlur,
             handleSubmit,
             handleReset
@@ -52,6 +53,7 @@ const LoginContainer = (props) => {
                touched={touched}
                values={values}
                isSubmitting={isSubmitting}
+               setFieldTouched={setFieldTouched}
                formSubmit={initLogin}
                inputType={inputType}
                onIconCLick={toggleVisibilityPassword}

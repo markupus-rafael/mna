@@ -4,6 +4,7 @@ const ACCOUNT = '/account';
 const OPPORTUNITIES = '/opportunities';
 const ACQUIRER_CRITERIA = '/acquirerCriteria';
 const ACQUIRERS = '/acquirers';
+const MATCHES = '/matches';
 
 const Routes = {
     LOGIN,
@@ -12,6 +13,7 @@ const Routes = {
     OPPORTUNITIES,
     ACQUIRER_CRITERIA,
     ACQUIRERS,
+    MATCHES
 };
 
 export default Routes;

@@ -6,6 +6,7 @@
   margin-bottom: 15px;
 
    &__label {
+     font-size: 11px;
      margin-bottom: 5px;
      text-transform: uppercase;
    }
@@ -24,7 +25,7 @@
   border: solid 1px $light-color;
   width: 100%;
 
-  &:not(mna-input--error) {
+  &:not(.mna-input--error) {
     @include updateFocus;
   }
 
@@ -33,9 +34,10 @@
   }
 
   &--error {
-    border: solid 1px $error-color;
+    box-shadow: 0 0 0 1px $error-color;
 
     &:focus {
+      outline: 0;
       box-shadow: 0 0 0 2px $error-color
     }
   }

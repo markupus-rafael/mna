@@ -4,3 +4,11 @@
     box-shadow: 0 0 0 2px $focus-color;
   }
 }
+
+@mixin resetLinksStyle() {
+  text-decoration: none;
+  list-style-type: none;
+   &:hover {
+     text-decoration: none;
+   }
+}

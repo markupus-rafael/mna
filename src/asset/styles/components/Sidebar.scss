@@ -1,19 +1,40 @@
 .mna-sidebar {
   padding-top: 30px;
   background-color: #fff;
+  height: 100%;
 
   &__nav {
     display: flex;
     flex-direction: column;
+    padding-right: 30px;
+  }
+
+  &__list {
+    list-style-type: none;
   }
 
   &__item {
-    margin-bottom: 35px;
+    margin-bottom: 15px;
+
   }
 
   &__link {
+    display: block;
+    width: 100%;
     font-size: 14px;
-    padding: 18px 0;
+    font-weight: 500;
+    padding: 18px 0 18px 32px;
+    border-radius: 0 5px 5px 0;
+    color: $text-color;
+
+    &:hover {
+      background-color: $primary-color;
+      color: #fff;
+      transition: .5s ease background-color;
+    }
+
+
+    @include resetLinksStyle;
       &:hover {
         background-color: $primary-color;
         color: #fff;
