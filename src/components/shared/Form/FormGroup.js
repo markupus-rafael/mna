@@ -8,7 +8,17 @@ const isPasswordI = (name) => name === 'password';
 
 // TODO REFACTOR FormGroup, REMOVE withIconBlock from component
 
-export const FormGroup = ({type, name, labelText, value, dispayError, onChange, onIconCLick, inputHasError: inputHaError, errors, setFieldTouched}) => {
+export const FormGroup = ({   type,
+                              name,
+                              labelText,
+                              value,
+                              dispayError,
+                              onChange,
+                              onIconCLick,
+                              inputHaError,
+                              errors,
+                              setFieldTouched
+}) => {
 
     const isPassword = isPasswordI(name);
     const withIconBlock =  <div className="form-group__inner">
@@ -23,7 +33,10 @@ export const FormGroup = ({type, name, labelText, value, dispayError, onChange, 
 
     return (
         <div className="form-group">
-            {!dispayError ? <label className="form-group__label" htmlFor={name}>{labelText}</label> : <MnaErrorMessage name={name}/> }
+            {!dispayError ?
+                <label className="form-group__label" htmlFor={name}>{labelText}</label>
+                :
+                <MnaErrorMessage name={name}/> }
 
             {isPassword ? withIconBlock : <Input type={type}
                                                  onChange={onChange}

@@ -72,14 +72,19 @@ const mapDispatchToProps = dispatch => ({
     loginUser: data => dispatch(login(data)),
 });
 
-export default compose( withRouter,
-                        withFormik({
+export default compose(
+                            connect(
+                                mapStateToProps,
+                                mapDispatchToProps
+                            ),
+                            withRouter,
+                            withFormik({
                             //enableReinitialize: true,
                             mapPropsToValues: () => ({
                                 email: '',
                                 password: ''
                             }),
-                            handleSubmit: (values, {setSubmitting, props}) => {
+                            handleSubmit: (values, {props, setSubmitting}) => {
                                 console.log("Submitted Email:", values.email);
                                 console.log("Submitted Password:", values.password);
                                 // Simulates the delay of a real request
@@ -87,9 +92,9 @@ export default compose( withRouter,
                                 const payload = {
                                     ...values,
                                 };
-                                //loginUser(payload);
+                                props.loginUser(payload);
                                 // test
                                 setTimeout(() => setSubmitting(false), 3 * 1000);
                             },
                             validationSchema: LoginValidation
-                        }), connect(mapStateToProps, mapDispatchToProps))(LoginContainer);
+                        }))(LoginContainer);

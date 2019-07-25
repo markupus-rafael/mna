@@ -1,0 +1,29 @@
+.mna-popover {
+  border: solid 1px #ebecf1;
+
+  &__content {
+    max-width: 300px;
+    width: 100%;
+    padding: 30px;
+    background-color: #ffffff;
+  }
+
+  &__header {
+    display: flex;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ebecf1;
+
+     &-avatar {
+       margin-right: 25px;
+     }
+
+    &-info {
+
+    }
+
+    h5 {
+      margin-bottom: 15px;
+    }
+  }
+
+}
