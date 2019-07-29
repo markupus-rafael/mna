@@ -7,7 +7,6 @@
 
 @mixin resetLinksStyle() {
   text-decoration: none;
-  list-style-type: none;
    &:hover {
      text-decoration: none;
    }

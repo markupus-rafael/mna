@@ -1,8 +1,8 @@
 import React from "react";
 
-const Input = ({error, ...props}) => {
+const Input = ({displayError, ...props}) => {
     return (
-        <input className={`mna-input ${error && 'mna-input--error'}`}
+        <input className={`mna-input ${displayError && 'mna-input--error'}`}
                {...props}
         />
     );

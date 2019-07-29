@@ -1,5 +1,7 @@
 @import 'helpers/reset';
+
 @import url('../../../node_modules/@blueprintjs/core/lib/css/blueprint.css');
+@import url('../../../node_modules/semantic-ui-css/semantic.min.css');
 @import 'helpers/vaiables';
 @import 'helpers/mixin';
 @import 'core';
@@ -17,6 +19,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: $body-bg;
   overflow-x: hidden;
+  margin: 25px; //
 }
 
 .App {

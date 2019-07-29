@@ -1,4 +1,4 @@
-@import "../helpers/vaiables";
+@import "../../helpers/vaiables";
 
 .form-group {
   display: flex;
@@ -24,14 +24,6 @@
   padding: 17px 30px 17px 17px;
   border: solid 1px $light-color;
   width: 100%;
-
-  &:not(.mna-input--error) {
-    @include updateFocus;
-  }
-
-  &--password {
-
-  }
 
   &--error {
     box-shadow: 0 0 0 1px $error-color;

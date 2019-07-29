@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import Login from "./Login";
 import { login } from "../../actions/login/loginsActions";
-import LoginValidation from "./validation/LoginShema";
+import WithFormikConfig from "./validation/WithFormikConfig";
 
 const initialValues = {
     email: '',
@@ -30,7 +30,10 @@ const LoginContainer = (props) => {
         props.loginUser(form);
     };
 
-    const toggleVisibilityPassword = () => setHidden({hidden: !inputPassword.hidden});
+    const toggleVisibilityPassword = () => {
+        setHidden({hidden: !inputPassword.hidden});
+        console.log(inputPassword.hidden);
+    }
 
     const inputType = inputPassword.hidden ? 'password' : 'text';
 
@@ -72,29 +75,8 @@ const mapDispatchToProps = dispatch => ({
     loginUser: data => dispatch(login(data)),
 });
 
-export default compose(
-                            connect(
-                                mapStateToProps,
-                                mapDispatchToProps
-                            ),
-                            withRouter,
-                            withFormik({
-                            //enableReinitialize: true,
-                            mapPropsToValues: () => ({
-                                email: '',
-                                password: ''
-                            }),
-                            handleSubmit: (values, {props, setSubmitting}) => {
-                                console.log("Submitted Email:", values.email);
-                                console.log("Submitted Password:", values.password);
-                                // Simulates the delay of a real request
-                                console.log(props);
-                                const payload = {
-                                    ...values,
-                                };
-                                props.loginUser(payload);
-                                // test
-                                setTimeout(() => setSubmitting(false), 3 * 1000);
-                            },
-                            validationSchema: LoginValidation
-                        }))(LoginContainer);
+export default compose(connect(mapStateToProps,
+                               mapDispatchToProps
+                              ),
+                               withRouter,
+                               withFormik(WithFormikConfig))(LoginContainer);

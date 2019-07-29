@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-const Paper = ({className, children}) => {
-    return (
-        <>
+const Paper = ({className, children}) =>
             <div className={`paper ${className}`}>
                 {children}
-            </div>
-        </>
-    );
-};
+            </div>;
 
 Paper.propTypes = {
     children: PropTypes.node.isRequired,

@@ -4,49 +4,27 @@ import Input from "./Input";
 import { ToggleVisibilityButton } from "./ToggleVisibilityButton";
 import MnaErrorMessage from "../ErrorMessage/MnaErrorMessage";
 
-const isPasswordI = (name) => name === 'password';
-
-// TODO REFACTOR FormGroup, REMOVE withIconBlock from component
-
-export const FormGroup = ({   type,
+export const FormGroup = ({
+                              children,
                               name,
                               labelText,
-                              value,
-                              dispayError,
-                              onChange,
-                              onIconCLick,
+                              displayError,
                               inputHaError,
                               errors,
-                              setFieldTouched
+                              className,
+                              withLabel,
 }) => {
-
-    const isPassword = isPasswordI(name);
-    const withIconBlock =  <div className="form-group__inner">
-                                <Input type={type}
-                                       name={name}
-                                       value={value}
-                                       onChange={onChange}
-                                       onKeyUp={() => setFieldTouched(name, true)}
-                                       error={inputHaError} />
-                                <ToggleVisibilityButton onClick={onIconCLick} />
-                            </div>;
-
+    const label = withLabel ? <label className="form-group__label" htmlFor={name}>{labelText}</label> : null;
     return (
-        <div className="form-group">
-            {!dispayError ?
-                <label className="form-group__label" htmlFor={name}>{labelText}</label>
-                :
-                <MnaErrorMessage name={name}/> }
-
-            {isPassword ? withIconBlock : <Input type={type}
-                                                 onChange={onChange}
-                                                 onKeyUp={() => setFieldTouched(name, true)}
-                                                 name={name}
-                                                 error={inputHaError}
-                                                 value={value}
-            />}
+        <div className={`form-group ${className || ''}`}>
+            {!displayError ? label : <MnaErrorMessage name={name} /> }
+            {children}
         </div>
     )
+};
+
+FormGroup.defaultProps = {
+    withLabel: true
 };
 
 FormGroup.propTypes = {
@@ -57,7 +35,6 @@ FormGroup.propTypes = {
         PropTypes.object,
     ]),
     onChange: PropTypes.func,
-    onIconCLick: PropTypes.func,
     value: PropTypes.string,
     name: PropTypes.string,
 };

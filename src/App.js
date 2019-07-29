@@ -6,6 +6,7 @@ import PrivateRoute from "./components/HOC/ProtectedRoute";
 import Opportunities from "./pages/Opportunities/Opportunities";
 import Routes from "./constants/routes";
 import Container from "./components/Container/Container";
+import Select from "./components/shared/Select/Select";
 
 function App() {
 
@@ -13,8 +14,9 @@ function App() {
     <div className="App">
           <BrowserRouter>
               <Switch>
+                  <Route exact path="/select" component={Select} />
+                  <Route exact path="/table" component={null} />
                   <Route exact path={Routes.LOGIN} component={Login} />
-                  <Route exact path="/" component={Container} />
                   <PrivateRoute exact path={Routes.OPPORTUNITIES} component={Opportunities} />
                   <PrivateRoute exact path={Routes.ACQUIRERS} component={null} />
                   <PrivateRoute exact path={Routes.ACQUIRER_CRITERIA} component={null} />

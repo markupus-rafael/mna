@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import loginImg from "./login.svg";
+import loginImg from "../../asset/img/login.svg";
 import LoginContainer from "../../components/Login/LoginContainer";
 import s from './login.module.scss';
 import Logo from "../../components/shared/Logo/Logo";

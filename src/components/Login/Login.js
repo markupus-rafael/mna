@@ -3,34 +3,46 @@ import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import {FormGroup} from "../shared/Form/FormGroup";
 import MnaErrorMessage from "../shared/ErrorMessage/MnaErrorMessage";
+import MnaButton from "../shared/Form/MnaButton";
+import Input from "../shared/Form/Input";
+import {ToggleVisibilityButton} from "../shared/Form/ToggleVisibilityButton";
 
 const Login = ({ handleChange, handleSubmit, inputType, onIconCLick, values, errors, touched, isSubmitting, setFieldTouched }) => (
+
     <form className="form-login" onSubmit={handleSubmit}>
         <FormGroup type="email"
                    labelText="Email"
-                   onChange={handleChange}
-                   setFieldTouched={setFieldTouched}
                    value={values.email}
                    errors={errors}
-                   dispayError={touched.email && errors.email}
-                   inputHasError={errors && errors.email}
+                   displayError={touched.email && errors.email}
+                   name="email">
+            <Input type="email"
                    name="email"
-        />
-
-        <FormGroup type={inputType}
+                   value={values.email}
                    onChange={handleChange}
-                   onIconCLick={onIconCLick}
-                   setFieldTouched={setFieldTouched}
-                   value={values.password}
-                   errors={errors}
+                   onKeyUp={() => setFieldTouched("email", true)}
+                   displayError={touched.email && errors.email}
+                   error={errors && errors.email} />
+        </FormGroup>
+        {console.log(errors)}
+        <FormGroup errors={errors}
                    dispayError={touched.password && errors.password}
-                   inputHasError={errors && errors.password}
                    labelText="Password"
-                   name="password"
-        />
+                   name="password">
+            <div className="form-group__inner">
+                <Input type={inputType}
+                       name="password"
+                       value={values.password}
+                       onChange={handleChange}
+                       onKeyUp={() => setFieldTouched("password", true)}
+                       displayError={touched.password && errors.password}
+                       error={errors && errors.password} />
+                <ToggleVisibilityButton onClick={onIconCLick} />
+            </div>
+        </FormGroup>
 
         <Link to="/forgotPassword" className="mna-link text-right accent" title="Forgot Password">Forgot Password</Link>
-        <button type="submit" className="mna-btn mna-btn--success mna-btn--login" disabled={isSubmitting}>Log in</button>
+        <MnaButton text="Log in" type="submit" className="mna-btn mna-btn--success mna-btn--login" disabled={isSubmitting} />
     </form>
 );
 

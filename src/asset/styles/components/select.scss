@@ -1,0 +1,54 @@
+$default-border-radius: 5px;
+
+.mna-select {
+
+  &.ui {
+
+    .dropdown .menu .selected.item {
+      background-color: aliceblue;
+    }
+
+    &.active {
+      .dropdown.icon {
+        transform: rotate(-180deg);
+      }
+    }
+
+    .selected.item[aria-selected="true"] {
+      background-color: rgb(244,249,237);
+      &:before {
+        content: "";
+        position: absolute;
+        right: 15px;
+        width: 20px;
+        height: 20px;
+        background-image: url("../img/selected-item.svg");
+      }
+    }
+    &.selection.dropdown .menu > .item {
+      position: relative;
+      border-top: none;
+      &:hover {
+        background-color: rgb(244,249,237);
+      }
+    }
+
+    &.active.selection.dropdown {
+      border: 1px solid #c3ccd7;
+      border-radius: $default-border-radius !important;
+    }
+
+  }
+
+
+  &.active.dropdown .menu,  &.ui.selection.active.dropdown .menu {
+    margin-top: 10px;
+    padding: 15px 0;
+    border-radius: $default-border-radius;
+
+    box-shadow: 0 8px 24px 0 rgba(37, 38, 42, 0.08);
+    border: solid 1px #c3ccd7;
+    background-color: #ffffff;
+  }
+
+}
