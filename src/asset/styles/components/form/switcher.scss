@@ -1,0 +1,37 @@
+.mna-switcher {
+
+  &.ui.toggle {
+
+    label {
+      &:before {
+        width: 50px;
+        height: 20px;
+        border: solid 1px #979797;
+        background: #d8d8d8;
+      }
+
+      &:after {
+        top: -2px;
+        width: 26px;
+        height: 26px;
+        box-shadow: 0 1px 10px 0 rgba(54, 64, 69, 0.19);
+        background-color: #ffffff;
+      }
+
+    }
+  }
+
+  // CHECKED ACTIVE STYLES
+  &.ui.checked.fitted {
+    input {
+      &:checked {
+        ~ label {
+          &:before {
+            background-color: $success-color !important;
+          }
+        }
+      }
+    }
+  }
+
+}

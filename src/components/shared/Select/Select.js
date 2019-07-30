@@ -4,6 +4,9 @@ import faker from 'faker'
 import _ from 'lodash'
 import {Dropdown, Input} from 'semantic-ui-react'
 import {Col, Row} from "react-flexbox-grid";
+import Switcher from "../Form/Switcher";
+import {FormGroup} from "../Form/FormGroup";
+import PhoneInput from "../Form/PhoneInput";
 
 const addressDefinitions= faker.definitions.address;
 const stateOptions = _.map(addressDefinitions.state.slice(0, 3), (state, index) => ({
@@ -28,12 +31,6 @@ const Select = ({className}) => {
 
     const handleChange = (e, { searchQuery, value }) => {
         setSearchQuery({ searchQuery, value })
-    };
-
-    const inputChange = (e, data) => {
-        console.log(data);
-        console.log(e);
-
     };
 
     const dropdownOnChange = (e, data) => {
@@ -63,18 +60,13 @@ const Select = ({className}) => {
                 </Col>
 
             <Col>
-                <Input
-                    label={<Dropdown defaultValue='+44'  className="" name="code" options={options} onChange={dropdownOnChange}/>}
-                    onChange={dropdownOnChange}
-                    name="phone"
-                    type="number"
-                    className="mna-input"
-                    labelPosition='left'
-                    placeholder='Phone'
-                />
-
+                <PhoneInput options={options} dropdownOnChange={null} onChange={null} />
             </Col>
-
+ <Col>
+     <FormGroup labelText="Financials Verified" inline>
+         <Switcher onChange={null} value="FinancialsVerified" name="FinancialsVerified" />
+     </FormGroup>
+ </Col>
         </Row>
 
     )

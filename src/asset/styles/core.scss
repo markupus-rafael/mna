@@ -2,7 +2,9 @@
 @import 'components/form/button';
 @import 'components/sidebar';
 @import 'components/popover';
-@import 'components/select';
+@import 'components/paper';
+@import 'components/form/select';
+@import 'components/form/switcher';
 @import 'helpers/utils';
 
 
@@ -11,6 +13,10 @@
 
   &-main {
     font-size: 30px;
+  }
+
+  &--collapse {
+    font-size: 16px;
   }
 }
 
@@ -29,6 +35,24 @@
     font-weight: 500;
     margin-bottom: 5px;
     color: $error-color;
+  }
+
+  &-dropdown-phone {
+    &.dropdown.ui {
+      padding: 17px;
+      height: auto;
+      width: auto;
+      border-radius: 5px;
+      border: solid 1px #c3ccd7;
+      background-color: #f5f8fe;
+    }
+
+  }
+
+  &-collapse {
+    &__header {
+      margin-bottom: 32px;
+    }
   }
 }
 

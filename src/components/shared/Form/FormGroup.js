@@ -12,11 +12,13 @@ export const FormGroup = ({
                               inputHaError,
                               errors,
                               className,
+                                inline,
                               withLabel,
 }) => {
-    const label = withLabel ? <label className="form-group__label" htmlFor={name}>{labelText}</label> : null;
+    inline = inline ? 'form-group--inline' : '';
+    const label = withLabel ? <label className={`form-group__label `} htmlFor={name}>{labelText}</label> : null;
     return (
-        <div className={`form-group ${className || ''}`}>
+        <div className={`form-group ${inline}`}>
             {!displayError ? label : <MnaErrorMessage name={name} /> }
             {children}
         </div>

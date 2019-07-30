@@ -15,12 +15,34 @@
     background-color: $success-color;
   }
 
+  &--success-without-bg {
+    color: $success-color;
+    border: 1px solid $success-color;
+    background-color: transparent;
+  }
+
+  &--danger {
+    background-color: $danger-color;
+  }
+
   &--default {
 
   }
 
   &--login {
     margin: 50px 0;
+  }
+
+  &--icon {
+    background-color: transparent;
+    border: 0;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    cursor: pointer;
+
+    @include updateFocus;
   }
 
   &--ico {

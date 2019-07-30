@@ -7,6 +7,8 @@ import Opportunities from "./pages/Opportunities/Opportunities";
 import Routes from "./constants/routes";
 import Container from "./components/Container/Container";
 import Select from "./components/shared/Select/Select";
+import Collapse from "./components/shared/Collapse/Collapse";
+import DemoPage from "./pages/DemoPage";
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
               <Switch>
                   <Route exact path="/select" component={Select} />
                   <Route exact path="/table" component={null} />
+                  <Route exact path="/collapse" component={DemoPage} />
                   <Route exact path={Routes.LOGIN} component={Login} />
                   <PrivateRoute exact path={Routes.OPPORTUNITIES} component={Opportunities} />
                   <PrivateRoute exact path={Routes.ACQUIRERS} component={null} />
