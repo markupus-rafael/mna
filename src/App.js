@@ -17,6 +17,7 @@ function App() {
           <BrowserRouter>
               <Switch>
                   <Route exact path="/select" component={Select} />
+                  <Route exact path="/" component={Container} />
                   <Route exact path="/table" component={null} />
                   <Route exact path="/collapse" component={DemoPage} />
                   <Route exact path={Routes.LOGIN} component={Login} />

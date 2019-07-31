@@ -1,30 +1,27 @@
 import React from "react";
 import { Search, Grid, Header, Segment } from 'semantic-ui-react'
-import {debounce} from "lodash";
+import debounce from "lodash/debounce";
 import PropTypes from "prop-types";
+import searchIco from "../../../asset/img/search-ico.svg";
 
-const SearchInput = ({handleSearchChange, delay, value}) => {
+const SearchInput = ({onChange, debounceDelay, ...rest}) => {
     return (
-        <Search
-            input={{ icon: 'search', iconPosition: 'left' }}
-           // loading={isLoading}
-            //onResultSelect={this.handleResultSelect}
-            onSearchChange={debounce(handleSearchChange, delay, {
-                leading: true,
-            })}
-           // results={results}
-            value={value}
-        />
+       <div className="mna-search-block">
+
+           <img src={searchIco} alt="search icon" className="mna-search-block__ico"/>
+           <input type="search" className="mna-input" onChange={debounce(onChange, debounceDelay)} {...rest}/>
+       </div>
     )
 };
 
 SearchInput.defaultProps = {
-    delay: 800
+    debounceDelay: 800
 };
 
 SearchInput.propTypes = {
     handleSearchChange: PropTypes.func,
-    delay: PropTypes.number,
+    value: PropTypes.string,
+    debounceDelay: PropTypes.number,
 };
 
 export default SearchInput;

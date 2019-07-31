@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import Paper from "./Paper";
 import {Col, Row} from "react-flexbox-grid";
+import Button from "../Form/Button";
 
 const ActionCard = ({title, text, buttonText, onClick, btnClassName}) =>
     <div className={`paper paper--action`}>
@@ -11,7 +12,11 @@ const ActionCard = ({title, text, buttonText, onClick, btnClassName}) =>
                 <p>{text}</p>
             </Col>
             <Col lg={1}  xs={12} md={6}  className="text-right">
-                <button className={`mna-btn ${btnClassName}`} type="button" onClick={onClick}>{buttonText}</button>
+                <Button text={buttonText}
+                        className={btnClassName}
+                        onClick={onClick}
+                        type="button"
+                />
             </Col>
         </Row>
     </div>;

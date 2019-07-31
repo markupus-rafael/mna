@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import {FormGroup} from "../shared/Form/FormGroup";
 import MnaErrorMessage from "../shared/ErrorMessage/MnaErrorMessage";
-import MnaButton from "../shared/Form/MnaButton";
+import Button from "../shared/Form/Button";
 import Input from "../shared/Form/Input";
 import {ToggleVisibilityButton} from "../shared/Form/ToggleVisibilityButton";
 
@@ -42,7 +42,7 @@ const Login = ({ handleChange, handleSubmit, inputType, onIconCLick, values, err
         </FormGroup>
 
         <Link to="/forgotPassword" className="mna-link text-right accent" title="Forgot Password">Forgot Password</Link>
-        <MnaButton text="Log in" type="submit" className="mna-btn mna-btn--success mna-btn--login" disabled={isSubmitting} />
+        <Button text="Log in" type="submit" className="mna-btn mna-btn--success mna-btn--login" disabled={isSubmitting} />
     </form>
 );
 

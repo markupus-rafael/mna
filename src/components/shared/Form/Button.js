@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 
-const MnaButton = ({text, ...rest}) => {
+const Button = ({text, ...rest}) => {
     return <button {...rest}> {text} </button>
 };
 
-MnaButton.propTypes = {
+Button.propTypes = {
   text: PropTypes.string
 };
 
-export default MnaButton;
+export default Button;

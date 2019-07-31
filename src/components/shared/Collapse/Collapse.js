@@ -10,11 +10,10 @@ const Collapse = ({defaultOpen, title, children}) => {
         isVisible: defaultOpen
     });
 
-    const onOpen = () => {
-        setCollapse({
-            isVisible: !collapse.isVisible
-        })
-    };
+    const onOpen = () => setCollapse({
+                            isVisible: !collapse.isVisible
+                        });
+
     const { isVisible } = collapse;
 
     const buttonContent = isVisible ? <img src={Close} alt=""/> : <img src={Open} alt=""/>;

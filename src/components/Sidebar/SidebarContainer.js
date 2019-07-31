@@ -6,6 +6,26 @@ import SidebarNav from "./SidebarNav";
 import { Button, Intent, Popover, PopoverInteractionKind, Position } from "@blueprintjs/core";
 import Input from "../shared/Form/Input";
 import Routes from "../../constants/routes";
+import AccountRadioButtonList from "../shared/Form/AccountRadioButtonList/AccountRadioButtonList";
+
+
+const items = [
+    {
+        name: "accountUser",
+        value: "allData",
+        labelText: "All Data",
+    },
+    {
+        name: "accountUser",
+        value: "lancliffe",
+        labelText: "Lancliffe",
+    },
+    {
+        name: "accountUser",
+        value: "partnerName",
+        labelText: "Partner name",
+    }
+];
 
 const Content = ({className, name='Nathan Thompson'}) => {
   return (
@@ -25,9 +45,7 @@ const Content = ({className, name='Nathan Thompson'}) => {
           </header>
               <div className="mna-popover__body">
                   <div className="mna-popover__body-inputs">
-                      <input type="radio" />
-                      <input type="radio" />
-                      <input type="radio" />
+                      <AccountRadioButtonList items={items}/>
                   </div>
               </div>
               <footer className="mna-popover__footer">
