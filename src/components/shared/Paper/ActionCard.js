@@ -7,11 +7,11 @@ import Button from "../Form/Button";
 const ActionCard = ({title, text, buttonText, onClick, btnClassName}) =>
     <div className={`paper paper--action`}>
         <Row middle="xs">
-            <Col lg={11} xs={12}  md={6}>
+            <Col lg={10} xs={12}  md={8}>
                 <h5 className="title title--collapse">{title}</h5>
                 <p>{text}</p>
             </Col>
-            <Col lg={1}  xs={12} md={6}  className="text-right">
+            <Col lg={2}  xs={12} md={4}  className="text-right">
                 <Button text={buttonText}
                         className={btnClassName}
                         onClick={onClick}
@@ -30,4 +30,3 @@ ActionCard.propTypes = {
 };
 
 export default ActionCard;
-

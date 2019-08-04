@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import PropTypes from "prop-types";
 import faker from 'faker'
+import {Col, Row} from "react-flexbox-grid";
+import clsx from 'clsx';
 import _ from 'lodash'
 import {Dropdown, Input} from 'semantic-ui-react'
-import {Col, Row} from "react-flexbox-grid";
 import Switcher from "../Form/Switcher";
 import {FormGroup} from "../Form/FormGroup";
 import PhoneInput from "../Form/PhoneInput";
@@ -19,7 +20,7 @@ const options = [
     { key: '+22', text: '+22', value: '+22' },
     { key: '+07', text: '+07', value: '+07' },
 ];
-const Select = ({className}) => {
+const Select = ({className, options, placeholder, medium, value, onShowItemsTable, name}) => {
     const [search, setSearchQuery] = useState({
         query: '',
         value: null
@@ -29,44 +30,32 @@ const Select = ({className}) => {
 
 
 
-    const handleChange = (e, { searchQuery, value }) => {
-        setSearchQuery({ searchQuery, value })
-    };
+    // const handleChange = (e, { searchQuery, value }) => {
+    //     setSearchQuery({ searchQuery, value })
+    // };
 
     const dropdownOnChange = (e, data) => {
         console.log(data);
         setNumber({...number, [e.target.name]: e.target.value, });
     };
-    console.log(number);
 
     const handleSearchChange = (e, { searchQuery }) => setSearchQuery({ searchQuery });
-    console.log(search);
     return(
         <Row>
-                <Col xs={6} md={6}>
                     <Dropdown
                         fluid
                         // multiple
-                        onChange={handleChange}
-                        onSearchChange={handleSearchChange}
-                        options={stateOptions}
-                        className="mna-select"
-                        placeholder='Status'
-                        search
-                        searchQuery={search.query}
+                        onChange={onShowItemsTable}
+                        onSearchChange={onShowItemsTable}
+                        options={options}
+                        name={name}
+                        className={`mna-select ${clsx({
+                            'mna-select--medium': medium
+                        })}`}
+                        //placeholder={placeholder}
                         selection
-                        value={search.value}
+                        value={value}
                     />
-                </Col>
-
-            <Col>
-                <PhoneInput options={options} dropdownOnChange={null} onChange={null} />
-            </Col>
- <Col>
-     <FormGroup labelText="Financials Verified" inline>
-         <Switcher onChange={null} value="FinancialsVerified" name="FinancialsVerified" />
-     </FormGroup>
- </Col>
         </Row>
 
     )
@@ -74,8 +63,9 @@ const Select = ({className}) => {
 
 
 Select.propTypes = {
-    children: PropTypes.node.isRequired,
     className: PropTypes.string,
+    search: PropTypes.bool,
+    multiple: PropTypes.bool,
 };
 
 export default Select;

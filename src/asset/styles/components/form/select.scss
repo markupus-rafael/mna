@@ -2,6 +2,11 @@ $default-border-radius: 5px;
 
 .mna-select {
 
+  &--medium {
+    max-width: 113px;
+    width: 100%;
+  }
+
   &.ui {
 
     .dropdown .menu .selected.item {

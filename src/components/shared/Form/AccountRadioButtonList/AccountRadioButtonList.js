@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import AccountRadioButton from "./AccountRadioButttonItem";
 
 const AccountRadioButtonList = ({items}) => {
@@ -8,6 +9,12 @@ const AccountRadioButtonList = ({items}) => {
             </div>
     )
 };
+
+AccountRadioButtonList.propTypes = {
+    items: PropTypes.arrayOf(),
+    row: PropTypes.bool,
+    column: PropTypes.bool,
+}
 
 export default AccountRadioButtonList;
 

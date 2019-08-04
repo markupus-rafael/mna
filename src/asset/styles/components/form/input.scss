@@ -108,3 +108,26 @@
   }
 
 }
+
+.mna-keyword {
+  display: flex;
+  align-items: center;
+  padding: 13px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: solid 1px #c3ccd7;
+
+  &__item {
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 13px;
+    background-color: #99a9bb;
+    padding: 5px 33px 5px 10px;
+    margin-right: 8px;
+  }
+  &__input {
+    outline: none;
+    border: none;
+  }
+}

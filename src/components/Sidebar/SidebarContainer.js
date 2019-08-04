@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import clsx from 'clsx';
 import {Link} from 'react-router-dom';
 import sidebardData from "./Siderbar.data";
 import {Col} from "react-flexbox-grid";
@@ -7,7 +8,7 @@ import { Button, Intent, Popover, PopoverInteractionKind, Position } from "@blue
 import Input from "../shared/Form/Input";
 import Routes from "../../constants/routes";
 import AccountRadioButtonList from "../shared/Form/AccountRadioButtonList/AccountRadioButtonList";
-
+import menuIco from "../../asset/img/menu-ico.svg";
 
 const items = [
     {
@@ -45,7 +46,7 @@ const Content = ({className, name='Nathan Thompson'}) => {
           </header>
               <div className="mna-popover__body">
                   <div className="mna-popover__body-inputs">
-                      <AccountRadioButtonList items={items}/>
+                      <AccountRadioButtonList items={items} />
                   </div>
               </div>
               <footer className="mna-popover__footer">
@@ -56,10 +57,17 @@ const Content = ({className, name='Nathan Thompson'}) => {
 };
 
 const SidebarContainer = () => {
+    const [open, setOpen] = useState(true);
+
+    const toggleSidebar = () => {
+        setOpen(!open)
+    };
+
     return (
-        <div className="mna-sidebar flex-column">
-            <button type="button">open close</button>
-            <SidebarNav sidebardData={sidebardData}/>
+        <div className={`mna-sidebar flex-column ${clsx({
+            'mna-sidebar--open': open
+        })}`}>
+            <SidebarNav sidebardData={sidebardData} toggleSidebar={toggleSidebar}/>
             <div className="mna-sidebar__account">
                 <Popover content={<Content className="mna-popover__content"/>}
                          popoverClassName="mna-popover"
